@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de CEP</title>
+  <script>
+    function consultarCEP() {
+      // Obtenha o valor do CEP do input
+      var cep = document.getElementById('cep').value;
+
+      // Monta a URL da API do ViaCEP
+      var url = `https://viacep.com.br/ws/${cep}/json/`;
+
+      // Faz a requisição AJAX
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          // Parseia a resposta JSON
+          var endereco = JSON.parse(xhr.responseText);
+
+          // Atualiza os campos no HTML
+          document.getElementById('tipoLogradouro').innerHTML = endereco.logradouro ? endereco.logradouro : '';
+          document.getElementById('nomeRua').innerHTML = endereco.logradouro ? endereco.logradouro : '';
+          document.getElementById('bairro').innerHTML = endereco.bairro ? endereco.bairro : '';
+          document.getElementById('cidade').innerHTML = endereco.localidade ? endereco.localidade : '';
+          document.getElementById('estado').innerHTML = endereco.uf ? endereco.uf : '';
+        }
+      };
+
+      xhr.send();
+    }
+  </script>
+</head>
+<body>
+  <h1>Consulta de CEP</h1>
+  <label for="cep">CEP:</label>
+  <input type="text" id="cep" placeholder="Digite o CEP">
+  <button onclick="consultarCEP()">Consultar</button>
+
+  <h2>Resultado:</h2>
+  <p><strong>Tipo Logradouro:</strong> <span id="tipoLogradouro"></span></p>
+  <p><strong>Nome da Rua:</strong> <span id="nomeRua"></span></p>
+  <p><strong>Bairro:</strong> <span id="bairro"></span></p>
+  <p><strong>Cidade:</strong> <span id="cidade"></span></p>
+  <p><strong>Estado:</strong> <span id="estado"></span></p>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <h2>Lista de Imóveis</h2>
+        <br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">Proprietário</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for imovel in imoveis %}
+                    <tr>
+                        <th scope="row">{{ imovel.idImovel }}</th>
+                        <td>{{ imovel.endTipoLogradouro }} {{ imovel.endNome }}, {{ imovel.endNumero }} {{ imovel.endComplemento }}, {{ imovel.endBairro }}, {{ imovel.endCidade }} - {{ imovel.endEstado }}, {{ imovel.endCEP }}</td>
+                        <td>{{ imovel.nome }} (CPF: {{ imovel.cpfDono }})</td>
+                        <td><a href="{{ url_for('editar_imovel', idImovel=imovel.idImovel) }}">Editar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

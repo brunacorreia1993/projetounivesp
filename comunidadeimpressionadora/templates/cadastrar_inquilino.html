@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+  <div class="content-section">
+    <form method="POST" action="" class="mx-auto">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Cadastrar Inquilino</legend>
+        {{ form.csrf_token }}
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.cpfInquilino.label(class="form-control-label") }}
+            {{ form.cpfInquilino(class="form-control form-control-lg") }}
+            {% for error in form.cpfInquilino.errors %}
+              <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.nome.label(class="form-control-label") }}
+            {{ form.nome(class="form-control form-control-lg") }}
+            {% for error in form.nome.errors %}
+              <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.email.label(class="form-control-label") }}
+            {{ form.email(class="form-control form-control-lg") }}
+            {% for error in form.email.errors %}
+              <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.dddTelefone.label(class="form-control-label") }}
+            {{ form.dddTelefone(class="form-control form-control-lg") }}
+            {% for error in form.dddTelefone.errors %}
+              <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.numeroTelefone.label(class="form-control-label") }}
+            {{ form.numeroTelefone(class="form-control form-control-lg") }}
+            {% for error in form.numeroTelefone.errors %}
+              <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.imovel_alugado.label(class="form-control-label") }}
+            {{ form.imovel_alugado(class="form-control form-control-lg") }}
+            {% for error in form.imovel_alugado.errors %}
+              <small class="form-text text-danger">{{ error }}</small>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="form-group"><br>
+          <button type="submit" class="btn btn-outline-info">Cadastrar</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+{% endblock %}

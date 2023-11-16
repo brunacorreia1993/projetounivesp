@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="content-section mx-auto">
+        <form method="POST">
+            <label for="pago_inquilino" class="form-control-label">Pago pelo Inquilino:</label>
+            <select id="pago_inquilino" name="pago_inquilino" class="form-control form-control-lg">
+                <option value="Sim" {% if pagamento.pagoInquilino == 'Sim' %}selected{% endif %}>Sim</option>
+                <option value="Não" {% if pagamento.pagoInquilino == 'Não' %}selected{% endif %}>Não</option>
+            </select>
+
+            <label for="valor_aluguel" class="form-control-label">Valor do Aluguel:</label>
+            <input type="number" id="valor_aluguel" name="valor_aluguel" value="{{ pagamento.valorAluguel }}" class="form-control form-control-lg">
+
+            <label for="valor_pago" class="form-control-label">Valor Pago:</label>
+            <input type="number" id="valor_pago" name="valor_pago" value="{{ pagamento.valorPago }}" class="form-control form-control-lg">
+
+            <label for="data_pagto_inquilino" class="form-control-label">Data de Pagamento pelo Inquilino:</label>
+            <input type="text" id="data_pagto_inquilino" name="data_pagto_inquilino" value="{{ pagamento.dataPagtoInquilino }}" class="form-control form-control-lg">
+
+            <label for="pago_dono" class="form-control-label">Pago ao Dono:</label>
+            <select id="pago_dono" name="pago_dono" class="form-control form-control-lg">
+                <option value="Sim" {% if pagamento.pagoDono == 'Sim' %}selected{% endif %}>Sim</option>
+                <option value="Não" {% if pagamento.pagoDono == 'Não' %}selected{% endif %}>Não</option>
+            </select>
+
+            <label for="data_pagto_dono" class="form-control-label">Data de Pagamento ao Dono:</label>
+            <input type="text" id="data_pagto_dono" name="data_pagto_dono" value="{{ pagamento.dataPagtoDono }}" class="form-control form-control-lg">
+
+            <!-- Adicione outros campos conforme necessário -->
+
+            <br>
+
+            <input type="submit" value="Salvar Alterações" class="btn btn-outline-info">
+        </form>
+    </div>
+{% endblock %}

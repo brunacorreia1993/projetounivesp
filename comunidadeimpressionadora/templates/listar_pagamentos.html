@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <h2>Lista de Pagamentos</h2>
+        <br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Dono</th>
+                    <th scope="col">Inquilino</th>
+                    <th scope="col">Contrato</th>
+                    <th scope="col">Data de Vencimento</th>
+                    <th scope="col">Pago pelo Inquilino</th>
+                    <th scope="col">Valor do Aluguel</th>
+                    <th scope="col">Valor Pago</th>
+                    <th scope="col">Data de Pagamento pelo Inquilino</th>
+                    <th scope="col">Pago ao Dono</th>
+                    <th scope="col">Data de Pagamento pelo Dono</th>
+                    <!-- Adicione esta coluna à tabela -->
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pagamento in pagamentos %}
+                    <tr>
+                        <th scope="row">{{ pagamento.idPagto }}</th>
+                        <td>{{ pagamento.dono }}</td>
+                        <td>{{ pagamento.inquilino }}</td>
+                        <td>{{ pagamento.contrato }}</td>
+                        <td>{{ pagamento.dataVencimento }}</td>
+                        <td>{{ pagamento.pagoInquilino }}</td>
+                        <td>{{ pagamento.valorAluguel }}</td>
+                        <td>{{ pagamento.valorPago }}</td>
+                        <td>{{ pagamento.dataPagtoInquilino }}</td>
+                        <td>{{ pagamento.pagoDono }}</td>
+                        <td>{{ pagamento.dataPagtoDono }}</td>
+                        <!-- Adicione este trecho dentro do loop for -->
+                        <td><a href="{{ url_for('editar_pagamento', id_pagamento=pagamento.idPagto) }}">Editar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

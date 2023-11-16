@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+  <div class="content-section">
+    <form method="POST" action="" class="mx-auto"> {# Adicione a classe mx-auto aqui #}
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Cadastrar Imóvel</legend>
+        {{ form.csrf_token }}
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.endCEP.label(class="form-control-label") }}
+            {{ form.endCEP(class="form-control form-control-lg") }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.cpfDono.label(class="form-control-label") }}
+            {{ form.cpfDono(class="form-control form-control-lg") }}
+          </div>
+          <div class="form-group col-md-8">
+            {{ form.nome.label(class="form-control-label") }}
+            {{ form.nome(class="form-control form-control-lg") }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.email.label(class="form-control-label") }}
+            {{ form.email(class="form-control form-control-lg") }}
+          </div>
+          <div class="form-group col-md-8">
+            {{ form.dddTelefone.label(class="form-control-label") }}
+            {{ form.dddTelefone(class="form-control form-control-lg") }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.numeroTelefone.label(class="form-control-label") }}
+            {{ form.numeroTelefone(class="form-control form-control-lg") }}
+          </div>
+          <div class="form-group col-md-8">
+            {{ form.contaBancaria.label(class="form-control-label") }}
+            {{ form.contaBancaria(class="form-control form-control-lg") }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.endTipoLogradouro.label(class="form-control-label") }}
+            {{ form.endTipoLogradouro(class="form-control form-control-lg") }}
+          </div>
+          <div class="form-group col-md-8">
+            {{ form.endNome.label(class="form-control-label") }}
+            {{ form.endNome(class="form-control form-control-lg") }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.endNumero.label(class="form-control-label") }}
+            {{ form.endNumero(class="form-control form-control-lg") }}
+          </div>
+          <div class="form-group col-md-8">
+            {{ form.endComplemento.label(class="form-control-label") }}
+            {{ form.endComplemento(class="form-control form-control-lg") }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.endBairro.label(class="form-control-label") }}
+            {{ form.endBairro(class="form-control form-control-lg") }}
+          </div>
+          <div class="form-group col-md-8">
+            {{ form.endCidade.label(class="form-control-label") }}
+            {{ form.endCidade(class="form-control form-control-lg") }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.endEstado.label(class="form-control-label") }}
+            {{ form.endEstado(class="form-control form-control-lg") }}
+          </div>
+          <div class="form-group col-md-8">
+            {{ form.alugado.label(class="form-control-label") }}
+            {{ form.alugado(class="form-control form-control-lg") }}
+          </div>
+        </div>
+
+        <div class="form-group"><br>
+          {{ form.botao_submit_imovel(class="btn btn-outline-info") }}
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#endCEP").change(function() {
+        var cepValue = $(this).val();
+        if (cepValue === "03390050") {
+          $("#endTipoLogradouro").val("Rua");
+          $("#endNome").val("Inconfidência Baiana");
+          $("#endBairro").val("Vila Primavera");
+          $("#endCidade").val("São Paulo");
+          $("#endEstado").val("SP");
+        } else if (cepValue === "03390040") {
+          $("#endTipoLogradouro").val("Rua");
+          $("#endNome").val("Barcelos Leite");
+          $("#endBairro").val("Vila Primavera");
+          $("#endCidade").val("São Paulo");
+          $("#endEstado").val("SP");
+        }
+      });
+    });
+  </script>
+
+{% endblock %}

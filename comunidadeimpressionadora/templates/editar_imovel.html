@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <div class="content-section">
+    <form method="POST" action="" class="mx-auto">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Editar Imóvel</legend>
+        {{ form.csrf_token }}
+
+        {# Adicione um campo hidden para armazenar o ID do imóvel #}
+        {{ form.idImovel(class="form-control form-control-lg", type="hidden") }}
+
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            {{ form.endCEP.label(class="form-control-label") }}
+            {{ form.endCEP(class="form-control form-control-lg") }}
+          </div>
+        </div>
+
+        <!-- Adicione os outros campos do formulário seguindo a mesma estrutura -->
+
+        <div class="form-group"><br>
+          {{ form.botao_submit_imovel(class="btn btn-outline-info") }}
+        </div>
+      </fieldset>
+    </form>
+  </div>
+{% endblock %}
